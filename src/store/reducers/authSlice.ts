@@ -24,7 +24,7 @@ const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        login_user: (state, action) => {
+        login_user: (_, action) => {
             Cookies.set("auth", JSON.stringify(action.payload.user))
             Cookies.set("accessToken", action.payload.token, {expires: 1})
             
