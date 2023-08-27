@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+h1 {
+    font-size: 5rem;
+    font-weight: bolder;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: bolder;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: rgb(53, 53, 53);
+}
+
+.textarea {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    min-height: 20px;
+    line-height: 20px;
+  }
+
+  .textarea[contenteditable]:empty::before {
+    content: "Type a message";
+    color: gray;
+  }
