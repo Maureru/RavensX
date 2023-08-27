@@ -34,7 +34,7 @@ const loginUser = async (form: {
     password: string,
   }) => {
     const {data} = await axios
-    .post('http://localhost:5000/auth/login', form)
+    .post('https://ravensx-server-nodes.onrender.com/auth/login', form)
 
     return data
 }
