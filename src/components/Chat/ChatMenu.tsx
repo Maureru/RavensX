@@ -30,7 +30,7 @@ const ChatMenu: React.FC<ChatMenuProps> = () => {
 
   const getConvos = async () => {
     await axios
-      .post('http://localhost:5000/chat/get_conversation', {
+      .post('https://ravensx-server-nodes.onrender.com/chat/get_conversation', {
         user_id: auth._id,
       })
       .then((res) => {
@@ -60,7 +60,7 @@ const ChatMenu: React.FC<ChatMenuProps> = () => {
   useEffect(() => {
     const getSearch = async () => {
       await axios
-        .post('http://localhost:5000/auth/search', {
+        .post('https://ravensx-server-nodes.onrender.com/auth/search', {
           query: search,
         })
         .then((res) => {

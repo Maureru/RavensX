@@ -12,7 +12,7 @@ interface Form {
 
 // verify user
 const verifyUser = async () => {
-    const { data } = await axios.get('http://localhost:5000/auth', {
+    const { data } = await axios.get('https://ravensx-server-nodes.onrender.com/auth', {
       headers: {
         accessToken: Cookies.get('accessToken'),
       },
@@ -23,7 +23,7 @@ const verifyUser = async () => {
 // Register
 const register = async (form: Form) => {
     const {data} = await axios
-    .post('http://localhost:5000/auth/signup', form)
+    .post('https://ravensx-server-nodes.onrender.com/auth/signup', form)
 
     return data
 }
@@ -43,7 +43,7 @@ const loginUser = async (form: {
 // check email if exist
 const checkEmail = async (email: string) => {
     const {data} = await axios
-            .post('http://localhost:5000/auth/email_check', {
+            .post('https://ravensx-server-nodes.onrender.com/auth/email_check', {
               email: email,
             })
     return data

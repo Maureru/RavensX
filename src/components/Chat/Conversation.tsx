@@ -76,10 +76,13 @@ const Conversation: React.FC<ConversationProps> = () => {
 
     setIsLoading(true);
     await axios
-      .post('http://localhost:5000/chat/check_conversation', {
-        user_id: auth._id,
-        other_id: newChat.otherUserId,
-      })
+      .post(
+        'https://ravensx-server-nodes.onrender.com/chat/check_conversation',
+        {
+          user_id: auth._id,
+          other_id: newChat.otherUserId,
+        }
+      )
       .then((res) => {
         if (res.data.error) {
           if (res.data.type) {
@@ -101,7 +104,7 @@ const Conversation: React.FC<ConversationProps> = () => {
 
   const getConvoMessage = async () => {
     await axios
-      .post('http://localhost:5000/chat/get_message', {
+      .post('https://ravensx-server-nodes.onrender.com/chat/get_message', {
         conversation_id: id,
       })
       .then((res) => {
@@ -160,13 +163,16 @@ const Conversation: React.FC<ConversationProps> = () => {
   const sendMessage = async () => {
     if (isNewChat) {
       await axios
-        .post('http://localhost:5000/chat/create_conversation_and_message', {
-          members: [auth._id, activeChat.otherUserId],
-          conversation_name: `${auth.name.split(' ')[0]} & ${
-            newChat.otherUserName.split(' ')[0]
-          }`,
-          messages: message,
-        })
+        .post(
+          'https://ravensx-server-nodes.onrender.com/chat/create_conversation_and_message',
+          {
+            members: [auth._id, activeChat.otherUserId],
+            conversation_name: `${auth.name.split(' ')[0]} & ${
+              newChat.otherUserName.split(' ')[0]
+            }`,
+            messages: message,
+          }
+        )
         .then((res) => {
           if (res.data.error) {
             console.log(res.data.error);
@@ -183,7 +189,7 @@ const Conversation: React.FC<ConversationProps> = () => {
         });
     } else {
       await axios
-        .post('http://localhost:5000/chat/send_message', {
+        .post('https://ravensx-server-nodes.onrender.com/chat/send_message', {
           messages: { ...message, conversation_id: id },
         })
         .then((res) => {
